@@ -24,7 +24,8 @@ function checkRepeatedPlayer() {
 
   if (players.includes(input.value) == true){
     playerExists.innerHTML = `<p> Jogador ${input.value} já existe</p>`;
-  } else{
+  }
+   else{
     playerExists.innerHTML = `<p> Jogador ${input.value} disponivel</p>`;
   }
 
