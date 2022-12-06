@@ -52,7 +52,6 @@ function createCardFace(face, card, element) {
     iconElement.classList.add(ICON);
     iconElement.src = `../images/github.svg`;
     cardElementFace.appendChild(iconElement);
-    // cardElementFace.innerHTML = "&lt/&gt";
   }
   element.appendChild(cardElementFace);
 }
@@ -64,11 +63,12 @@ function flipCard() {
     this.classList.add("flip");
     if (game.secondCard) {
       if (game.checkMatch()) {
+        disableCard();  
         game.clearCards();
         if (game.checkGameOver()) {
           let gameOverLayer = document.getElementById("gameOver");
           gameOverLayer.style.display = 'flex';
-        }
+        }      
       } else {
         setTimeout(() => {
           let firstCardView = document.getElementById(game.firstCard.id);
@@ -82,6 +82,19 @@ function flipCard() {
     }
   }
 }
+
+function disableCard(){
+  if (game.checkMatch() == true){
+    console.log(game.checkMatch());
+    let firstCardView = document.getElementById(game.firstCard.id);
+    let SecondCardView = document.getElementById(game.secondCard.id);
+
+    firstCardView.firstChild.classList.add('disable_card');
+    SecondCardView.firstChild.classList.add('disable_card');
+  }
+  
+}
+
 
 function restart() {
 

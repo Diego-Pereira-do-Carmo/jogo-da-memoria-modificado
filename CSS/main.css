@@ -50,6 +50,11 @@ body{
   transform: rotateY(180deg);
 }
 
+.disable_card{
+  filter: saturate(0);
+  opacity: 0.5;
+}
+
 .card_front{
   transform: rotateY(180deg);
   background-color: #101c3c;;
@@ -58,7 +63,6 @@ body{
 
 .card_back{
   background-color: #05c3ff;
-  /* display: none; */
 }
 
 .card_back img {

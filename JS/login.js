@@ -34,10 +34,13 @@ function checkRepeatedPlayer() {
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  // checkRepeatedPlayer();
+  checkRepeatedPlayer();
 
   if (players.includes(input.value) == false){
-    players.push(input.value);
+    players.push({name: input.value,
+                  moves: 0,
+    
+    });
   } 
 
   localStorage.setItem('playersData', JSON.stringify(players));
