@@ -3,13 +3,11 @@ const BACK = "card_back";
 const CARD = "card";
 const ICON = "icon"
 
-
 // iniciando o game
 startGame();
 
 // funcão responsavel por começar o jogo
 function startGame() {
-
   initializeCards(game.createCardsFromTechs());
 }
 
@@ -61,7 +59,11 @@ function flipCard() {
   if (game.setCard(this.id)) {
 
     this.classList.add("flip");
+
     if (game.secondCard) {
+      game.amountOfMovementes += 1;
+      markingOfMovements();
+
       if (game.checkMatch()) {
         disableCard();  
         game.clearCards();
@@ -85,7 +87,7 @@ function flipCard() {
 
 function disableCard(){
   if (game.checkMatch() == true){
-    console.log(game.checkMatch());
+   
     let firstCardView = document.getElementById(game.firstCard.id);
     let SecondCardView = document.getElementById(game.secondCard.id);
 
@@ -95,12 +97,23 @@ function disableCard(){
   
 }
 
+function markingOfMovements(){
+  let amountMoves = document.getElementById('amountMoves');
+  let playerName = document.getElementById('playerName');
+
+  // playerName.innerHTML = ` <p>Jogador: ${}</p>`
+  amountMoves.innerHTML = `<p>movimentos: ${game.amountOfMovementes}</p>`
+
+}
+
 
 function restart() {
-
+  game.amountOfMovementes = 0;
+  markingOfMovements();
   game.clearCards();
   startGame();
-
   let gameOverLayer = document.getElementById("gameOver");
   gameOverLayer.style.display = 'none';
+
+  window.location = '../pages/index.html';
 }
