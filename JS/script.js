@@ -1,7 +1,7 @@
 const FRONT = "card_front";
 const BACK = "card_back";
 const CARD = "card";
-const ICON = "icon"
+const ICON = "icon";
 
 // iniciando o game
 startGame();
@@ -65,12 +65,12 @@ function flipCard() {
       markingOfMovements();
 
       if (game.checkMatch()) {
-        disableCard();  
+        disableCard();
         game.clearCards();
         if (game.checkGameOver()) {
           let gameOverLayer = document.getElementById("gameOver");
           gameOverLayer.style.display = 'flex';
-        }      
+        }
       } else {
         setTimeout(() => {
           let firstCardView = document.getElementById(game.firstCard.id);
@@ -85,26 +85,31 @@ function flipCard() {
   }
 }
 
-function disableCard(){
-  if (game.checkMatch() == true){
-   
+function disableCard() {
+  if (game.checkMatch() == true) {
+
     let firstCardView = document.getElementById(game.firstCard.id);
     let SecondCardView = document.getElementById(game.secondCard.id);
 
     firstCardView.firstChild.classList.add('disable_card');
     SecondCardView.firstChild.classList.add('disable_card');
   }
-  
+
 }
 
-function markingOfMovements(){
+function markingOfMovements() {
   let amountMoves = document.getElementById('amountMoves');
-  let playerName = document.getElementById('playerName');
-
-  // playerName.innerHTML = ` <p>Jogador: ${}</p>`
   amountMoves.innerHTML = `<p>movimentos: ${game.amountOfMovementes}</p>`
-
 }
+
+function showPlayer(){
+  let inputValue = JSON.parse(localStorage.getItem('inputValue'));
+
+   let playerName = document.getElementById('playerName');
+  playerName.innerHTML = `<p>Jogador: ${inputValue}</p>`
+}
+
+addEventListener(onload, showPlayer());
 
 
 function restart() {

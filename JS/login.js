@@ -5,7 +5,7 @@ let button = document.querySelector('.login_button');
 let form = document.querySelector('.login_form');
 
 let players = JSON.parse(localStorage.getItem('playersData')) || [];
- 
+
 // função para validar o nome do jogador
 const validadeInput = (event) => {
   let ValidadePlayer = event.target.value
@@ -26,23 +26,25 @@ const handleSubmit = (event) => {
   const findPlayers = players.find(player => player.name === input.value);
   
   if (findPlayers === undefined){
-   
-    playerExists.innerHTML = `<p> Jogador ${input.value} já disponivel</p>`;
+    
     players.push({
       name: input.value,
       moves: 0
     });
 
+    // let playerName = document.getElementById('playerName');
+    // console.log(playerName)
+    // playerName.innerHTML = `<p>Jogador: ${input.value}</p>`
+
     window.location = '../pages/main.html';
-    
   } else {
     playerExists.innerHTML = `<p> Jogador ${input.value} ja existe</p>`;
   }
 
   localStorage.setItem('playersData', JSON.stringify(players));
+  localStorage.setItem('inputValue', JSON.stringify(input.value));
+
   input.value = '';
-  
-  // window.location = '../pages/main.html';
 }
 
 //adicionando o ouvinte de evento ao input, e chamando a função validadeInput para ser executada 
