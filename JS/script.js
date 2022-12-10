@@ -103,22 +103,34 @@ function markingOfMovements() {
 }
 
 function showPlayer(){
-  let inputValue = JSON.parse(localStorage.getItem('inputValue'));
+  let playerTime = JSON.parse(localStorage.getItem('inputValue'));
 
    let playerName = document.getElementById('playerName');
-  playerName.innerHTML = `<p>Jogador: ${inputValue}</p>`
+  playerName.innerHTML = `<p>Jogador: ${playerTime}</p>`
 }
 
 addEventListener(onload, showPlayer());
 
 
 function restart() {
-  game.amountOfMovementes = 0;
+  saveMoves();
   markingOfMovements();
   game.clearCards();
   startGame();
   let gameOverLayer = document.getElementById("gameOver");
   gameOverLayer.style.display = 'none';
-
+  
+  game.amountOfMovementes = 0;
   window.location = '../pages/index.html';
+}
+
+function saveMoves(){
+
+  let players = JSON.parse(localStorage.getItem('playersData')) || [];
+  let playerTime = JSON.parse(localStorage.getItem('inputValue'));
+  const findPlayers = players.find(player => player.name === playerTime);
+
+  findPlayers.moves = game.amountOfMovementes;
+
+  localStorage.setItem('playersData', JSON.stringify(players));
 }

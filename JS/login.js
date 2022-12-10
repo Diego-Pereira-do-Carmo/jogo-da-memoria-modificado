@@ -12,7 +12,6 @@ const validadeInput = (event) => {
 
   if (ValidadePlayer.length >= 3) {
     button.removeAttribute('disabled')
-    // checkRepeatedPlayer();
     return
   }
   button.setAttribute('disabled', '')
@@ -31,12 +30,8 @@ const handleSubmit = (event) => {
       name: input.value,
       moves: 0
     });
-
-    // let playerName = document.getElementById('playerName');
-    // console.log(playerName)
-    // playerName.innerHTML = `<p>Jogador: ${input.value}</p>`
-
     window.location = '../pages/main.html';
+    
   } else {
     playerExists.innerHTML = `<p> Jogador ${input.value} ja existe</p>`;
   }
