@@ -13,10 +13,13 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: #000;
+  background-color: gray;
+}
+
+.container{
+  margin-left: 2rem;
 }
 
 #movesBoard {
@@ -35,6 +38,48 @@ body {
   display: grid;
   grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
   gap: 15px;
+}
+
+.containerList{
+  width: 317px;
+  height: 91%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  border-radius: 5px;
+  background-color: rgba(225, 255, 255, 0.5);
+}
+
+ul{
+  overflow-y: scroll;
+  height: 550px;
+}
+
+li{
+  background-color:#eee;
+  width: 300px;
+  padding: 5px;
+  margin-bottom: 5px;
+  /* text-align: ; */
+}
+
+li > p {
+  margin-top: 10px;
+}
+
+.btnRanking{
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin: 15px auto;
+  background-color: #05c3ff;
+  transition: all 0.5s;
+}
+
+.btnRanking:hover{
+  background-color: #000;
+  color: #05c3ff;
+  cursor: pointer;
 }
 
 .card {

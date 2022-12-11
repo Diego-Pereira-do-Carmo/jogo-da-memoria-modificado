@@ -99,13 +99,13 @@ function disableCard() {
 
 function markingOfMovements() {
   let amountMoves = document.getElementById('amountMoves');
-  amountMoves.innerHTML = `<p>movimentos: ${game.amountOfMovementes}</p>`
+  amountMoves.innerHTML = `<p>Jogadas: ${game.amountOfMovementes}</p>`
 }
 
-function showPlayer(){
+function showPlayer() {
   let playerTime = JSON.parse(localStorage.getItem('inputValue'));
 
-   let playerName = document.getElementById('playerName');
+  let playerName = document.getElementById('playerName');
   playerName.innerHTML = `<p>Jogador: ${playerTime}</p>`
 }
 
@@ -119,12 +119,12 @@ function restart() {
   startGame();
   let gameOverLayer = document.getElementById("gameOver");
   gameOverLayer.style.display = 'none';
-  
+
   game.amountOfMovementes = 0;
   window.location = '../pages/index.html';
 }
 
-function saveMoves(){
+function saveMoves() {
 
   let players = JSON.parse(localStorage.getItem('playersData')) || [];
   let playerTime = JSON.parse(localStorage.getItem('inputValue'));
@@ -134,3 +134,18 @@ function saveMoves(){
 
   localStorage.setItem('playersData', JSON.stringify(players));
 }
+
+function addToRanking() {
+  let players = JSON.parse(localStorage.getItem('playersData')) || [];
+  let list = document.getElementById('list');
+
+  players.sort(function (player1, player2) {
+    return player1.moves - player2.moves
+  });
+
+  players.forEach((player) => {
+    list.innerHTML += `<li>${player.name}<p>Jogadas: ${player.moves}</p></li>`
+  })
+}
+
+addEventListener(onload, addToRanking());
