@@ -148,4 +148,9 @@ function addToRanking() {
   })
 }
 
-addEventListener(onload, addToRanking());
+function resetRanking(){
+  localStorage.clear();
+  window.location = '../pages/index.html';
+}
+
+addEventListener(onload, addToRanking(), markingOfMovements());

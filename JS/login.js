@@ -15,32 +15,53 @@ const validadeInput = (event) => {
     return
   }
   button.setAttribute('disabled', '')
-  playerExists.innerHTML = `<p></p>`;
 }
 
 
 const handleSubmit = (event) => {
   event.preventDefault();
 
-  const findPlayers = players.find(player => player.name === input.value);
-  
-  if (findPlayers === undefined){
-    
+  let playerTime = input.value;
+  const findPlayers = players.find(player => player.name === playerTime);
+
+  if (findPlayers === undefined) {
+
     players.push({
-      name: input.value,
+      name: playerTime,
       moves: 0
     });
     window.location = '../pages/main.html';
-    
+
   } else {
-    playerExists.innerHTML = `<p> Jogador ${input.value} ja existe</p>`;
+    playerExists.innerHTML = `<p> Jogador ${playerTime} já existe</p>
+                              <h4>DESEJA CONTINUAR</h4>
+                              <div class="confirmPlayer">
+                              <button class="playerYes" onclick="confirmName()">SIM</button>
+                              <button class="playerNo" onclick="setNewName()">NÃO</button>
+                              </div>`;
+
+    button.setAttribute('disabled', '')
+   
   }
 
   localStorage.setItem('playersData', JSON.stringify(players));
-  localStorage.setItem('inputValue', JSON.stringify(input.value));
+  localStorage.setItem('inputValue', JSON.stringify(playerTime));
 
-  input.value = '';
+  // input.value = '';
 }
+
+function confirmName() {
+
+
+  window.location = '../pages/main.html';
+}
+
+function setNewName() {
+  input.value = '';
+ 
+  playerExists.innerHTML = `<small class="newName">Digite um Novo Nome!!!</small>`
+}
+
 
 //adicionando o ouvinte de evento ao input, e chamando a função validadeInput para ser executada 
 // quando tiver um evento do tipo input
