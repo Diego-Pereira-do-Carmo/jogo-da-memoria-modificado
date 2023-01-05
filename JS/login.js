@@ -22,6 +22,7 @@ const handleSubmit = (event) => {
   event.preventDefault();
 
   let playerTime = input.value;
+  let namePlayer = input.value;
   const findPlayers = players.find(player => player.name === playerTime);
 
   if (findPlayers === undefined) {
@@ -45,14 +46,12 @@ const handleSubmit = (event) => {
   }
 
   localStorage.setItem('playersData', JSON.stringify(players));
-  localStorage.setItem('inputValue', JSON.stringify(playerTime));
+  localStorage.setItem('inputValue', JSON.stringify(namePlayer));
 
   // input.value = '';
 }
 
 function confirmName() {
-
-
   window.location = '../pages/main.html';
 }
 

@@ -103,10 +103,10 @@ function markingOfMovements() {
 }
 
 function showPlayer() {
-  let playerTime = JSON.parse(localStorage.getItem('inputValue'));
+  let namePlayer = JSON.parse(localStorage.getItem('inputValue'));
 
   let playerName = document.getElementById('playerName');
-  playerName.innerHTML = `<p>Jogador: ${playerTime}</p>`
+  playerName.innerHTML = `<p>Jogador: ${namePlayer}</p>`
 }
 
 addEventListener(onload, showPlayer());
@@ -130,7 +130,12 @@ function saveMoves() {
   let playerTime = JSON.parse(localStorage.getItem('inputValue'));
   const findPlayers = players.find(player => player.name === playerTime);
 
-  findPlayers.moves = game.amountOfMovementes;
+  // findPlayers.moves = game.amountOfMovementes;
+  console.log(findPlayers);
+
+  if ((findPlayers.moves == 0) || (findPlayers.moves > game.amountOfMovementes) ){
+    findPlayers.moves = game.amountOfMovementes;
+  } 
 
   localStorage.setItem('playersData', JSON.stringify(players));
 }
