@@ -121,7 +121,7 @@ function restart() {
   gameOverLayer.style.display = 'none';
 
   game.amountOfMovementes = 0;
-  window.location = '../pages/index.html';
+  window.location = './pages/index.html';
 }
 
 function saveMoves() {
@@ -130,7 +130,6 @@ function saveMoves() {
   let playerTime = JSON.parse(localStorage.getItem('inputValue'));
   const findPlayers = players.find(player => player.name === playerTime);
 
-  // findPlayers.moves = game.amountOfMovementes;
   console.log(findPlayers);
 
   if ((findPlayers.moves == 0) || (findPlayers.moves > game.amountOfMovementes) ){
@@ -155,7 +154,7 @@ function addToRanking() {
 
 function resetRanking(){
   localStorage.clear();
-  window.location = '../pages/index.html';
+  window.location = '../index.html';
 }
 
 addEventListener(onload, addToRanking(), markingOfMovements());

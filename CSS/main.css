@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700;900&family=Rubik+Bubbles&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   border: none;
   list-style: none;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
 }
 
 body {
@@ -47,7 +49,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin: 2rem; */
   border-radius: 5px;
   background-color: rgba(225, 255, 255, 0.5);
 }
@@ -58,11 +59,10 @@ ul{
 }
 
 li{
-  background-color:#eee;
   width: 300px;
   padding: 5px;
-  margin-bottom: 5px;
-  /* text-align: ; */
+  margin-top: 10px;
+  background-color:#eee;
 }
 
 li > p {
@@ -70,7 +70,7 @@ li > p {
 }
 
 .btnRanking{
-  padding: 15px 20px;
+  padding: 15px 60px;
   border-radius: 5px;
   margin: 15px auto;
   background-color: #05c3ff;

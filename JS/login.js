@@ -31,7 +31,7 @@ const handleSubmit = (event) => {
       name: playerTime,
       moves: 0
     });
-    window.location = '../pages/main.html';
+    window.location = './pages/main.html';
 
   } else {
     playerExists.innerHTML = `<p> Jogador ${playerTime} já existe</p>
@@ -46,13 +46,13 @@ const handleSubmit = (event) => {
   }
 
   localStorage.setItem('playersData', JSON.stringify(players));
-  localStorage.setItem('inputValue', JSON.stringify(namePlayer));
+  localStorage.setItem('inputValue', JSON.stringify(playerTime));
 
   // input.value = '';
 }
 
 function confirmName() {
-  window.location = '../pages/main.html';
+  window.location = './pages/main.html';
 }
 
 function setNewName() {
